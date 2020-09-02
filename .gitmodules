@@ -1,3 +1,4 @@
 [submodule "compressor"]
 	path = compressor
-	url = https://github.com/taegeun-moon/debreachx
+  url = https://github.com/taegeun-moon/debreachx
+  branch = debreachx
