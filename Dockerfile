@@ -3,6 +3,7 @@ MAINTAINER  taegeun@skku.edu
 
 RUN         apt -y update
 RUN         apt -y install build-essential vim
+RUN         apt -y install python3
 
 # Install libblake3
 COPY        ./libblake3.so /usr/local/lib
@@ -18,8 +19,13 @@ RUN         cd /usr/src/libgcrypt-1.8.5 && ./configure && make install
 COPY        ./compressor /usr/src/compressor
 WORKDIR     /usr/src/compressor
 
+COPY        ./markers_to_brs.py /usr/src
+
+# Compile compressor and parser
 RUN         gcc -o markers_to_brs markers_to_brs.c
 RUN         make
 
+# Copy sample web pages
+COPY        ./samples /usr/src/samples
 
 WORKDIR     /usr/src

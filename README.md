@@ -49,18 +49,6 @@ $ make minipexcoin
 The compiled binary file will be located at `compressor/minipexcoin`
 
 
-## Building Taint Marker Parser
-
-The sample web pages provided contains pre-calculated markers. 
-You can remove markers from sample web pages and generate corresponding taint index files by using `markers_to_brs.c`.
-
-```shell
-# inside ./compressor
-$ gcc -o markers_to_brs markers_to_brs.c
-```
-
-The compiled binary file will be located at `compressor/markers_to_brs`
-
 # Configurations
 
 PexCoin provides two configurable options.
@@ -117,23 +105,23 @@ First, parse the taint markers and generate an input file to be compressed witho
 For example, let's try to compress `/usr/src/samples/adminer_select.html`
 
 ```shell
-# at the directory /usr/src/samples
-$ ../compressor/markers_to_brs adminer_select.html
+# at the directory /usr/src
+$ python3 markers_to_brs.py ./samples/adminer_select.html
 ```
 
 As a result, total 3 files are generated.
 
-- adminer_select.html.nomarkers
-- brs_input
-- brs_secret
+- ./samples/adminer_select.html.nomarkers
+- ./brs_input
+- ./brs_secret
 
 Then, at the same directory, you may call the compressor.
 
 ```shell
-$ ../compressor/minipexcoin adminer_select.html.nomarkers
+$ ./compressor/minipexcoin adminer_select.html.nomarkers
 
 # or directly calculated the compressed file size
-$ ../compressor/minipexcoin -c adminer_select.html.nomarkers | wc -c
+$ ./compressor/minipexcoin -c adminer_select.html.nomarkers | wc -c
 ```
 
 The compressed file will be located at `./samples/adminer_select.html.nomarkers.gz`
