@@ -125,3 +125,8 @@ $ ./compressor/minipexcoin -c adminer_select.html.nomarkers | wc -c
 ```
 
 The compressed file will be located at `./samples/adminer_select.html.nomarkers.gz`
+
+# Authors
+- Taegeun Moon (taegeun@skku.edu), Sungkyunkwan University
+- Hyoungshick Kim (hyoung@skku.edu), Sungkyunkwan University
+- Sangwon Hyun (swhyun77@gmail.com), Myongji University
